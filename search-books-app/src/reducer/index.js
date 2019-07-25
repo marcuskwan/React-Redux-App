@@ -27,10 +27,12 @@ export const reducer = (state = initialState, action) => {
         error: "",
       };
     case FETCH_BY_QUERY_SUCCESS:
+      const docs = action.payload;
       return {
         ...state,
         isFetching: false,
         error: "",
+        data: docs,
       };
     case FETCH_BY_QUERY_FAILURE:
       return {

@@ -1,25 +1,53 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function Form(props) {
-  const [searchTerm, setSearchTerm] = useState("");
+function Form({ fetchByQuery, fetchByTitle, fetchByAuthor }) {
+  const [input, setInput] = useState({
+    query: "",
+    title: "",
+    author: "",
+  });
+  const [selectedValue, setSelectedValue] = useState("query");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (input.query) {
+      fetchByQuery(input.query);
+    } else if (input.title) {
+      fetchByTitle(input.title);
+    } else if (input.author) {
+      fetchByAuthor(input.author);
+    }
+    setInput({
+      ...input,
+      query: "",
+      title: "",
+      author: "",
+    });
+  };
+
+  const handleChanges = e =>
+    setInput({
+      ...input,
+      query: "",
+      title: "",
+      author: "",
+      [e.target.name]: e.target.value,
+    });
 
   return (
     <div>
-      <form
-        onSubmit={event => {
-          event.preventDefault();
-        }}>
+      <form onSubmit={handleSubmit}>
         <input
-          name="input"
+          name={selectedValue}
           placeholder="search"
-          value={searchTerm}
-          onChange={event => setSearchTerm(event.target.value)}
+          value={input.query}
+          onChange={handleChanges}
         />
-        <select>
-          <option value="all" selected>
-            All
-          </option>
+        <select
+          defaultValue="query"
+          onChange={e => setSelectedValue(e.target.value)}>
+          <option value="query">All</option>
           <option value="title">Title</option>
           <option value="author">Author</option>
         </select>

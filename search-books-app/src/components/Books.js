@@ -1,19 +1,23 @@
-import React from 'react'
+import React from "react";
+import Loader from "react-loader-spinner";
 
-import Book from './Book'
+import Book from "./Book";
 
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-function Books(props) {
-    return (
-        <div>
+function Books({ data, isFetching, error }) {
+  if (isFetching)
+    return <Loader type="Hearts" color="#somecolor" height={80} width={80} />;
 
-        </div>
-    )
+  return (
+    <div>
+      {data.map(book => (
+          <Book book={book}/>
+      ))}
+    </div>
+  );
 }
 
-Books.propTypes = {
+Books.propTypes = {};
 
-}
-
-export default Books
+export default Books;
