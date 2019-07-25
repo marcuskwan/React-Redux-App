@@ -1,5 +1,9 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -29,5 +33,12 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.header-image {
+  width: 500px;
+  img {
+    width: 100%;
   }
 }

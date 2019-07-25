@@ -6,19 +6,24 @@ function Form(props) {
 
   return (
     <div>
-          <form onSubmit={event => { event.preventDefault(); }}>
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+        }}>
         <input
           name="input"
           placeholder="search"
           value={searchTerm}
           onChange={event => setSearchTerm(event.target.value)}
         />
-        >
         <select>
-          <option value="Search by.." />
-          <option value="Book" />
-          <option value="Author" />
+          <option value="all" selected>
+            All
+          </option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
         </select>
+        <button>search &rarr;</button>
       </form>
     </div>
   );
