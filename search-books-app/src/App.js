@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, useDispatch } from "react-redux";
-import axios from "axios";
+import Axios from "axios";
 
 import {
   FETCH_BY_QUERY_START,
@@ -18,7 +18,7 @@ function App({ data, isFetching, error }) {
   // fetchQuery fn
   const fetchByQuery = query => {
     dispatch({ type: FETCH_BY_QUERY_START });
-    axios
+    Axios
       .get(`//openlibrary.org/search.json?q=${query}`)
       .then(res => {
         console.log("res", res);
@@ -29,7 +29,7 @@ function App({ data, isFetching, error }) {
 
   // fetchtitle fn
   const fetchByTitle = title => {
-    axios.get();
+    Axios.get();
   };
 
   // fetchauthor fn

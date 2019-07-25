@@ -1,6 +1,6 @@
 // initialState
 const initialState = {
-  data: null,
+  data: [],
   isFetching: false,
   error: "",
 };
